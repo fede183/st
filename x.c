@@ -1291,10 +1291,12 @@ xinit(int cols, int rows)
 	root = XRootWindow(xw.dpy, xw.scr);
 	if (!(opt_embed && (parent = strtol(opt_embed, NULL, 0))))
 		parent = root;
-	xw.win = XCreateWindow(xw.dpy, root, xw.l, xw.t,
-			win.w, win.h, 0, XDefaultDepth(xw.dpy, xw.scr), InputOutput,
-			xw.vis, CWBackPixel | CWBorderPixel | CWBitGravity
-			| CWEventMask | CWColormap, &xw.attrs);
+
+	xw.win = XCreateWindow(xw.dpy, root, xw.l, xw.t, 
+		win.w, win.h, 0, XDefaultDepth(xw.dpy, xw.scr), InputOutput,
+ 		xw.vis, CWBackPixel | CWBorderPixel | CWBitGravity
+		| CWEventMask | CWColormap, &xw.attrs);
+
 	if (parent != root)
 		XReparentWindow(xw.dpy, xw.win, parent, xw.l, xw.t);
 
